@@ -2,20 +2,21 @@ FROM ubuntu:22.04
 
 COPY unified-supervisord.conf supervisord.conf /etc/supervisord/
 COPY mc.ini /home/abc/.config/mc/ini
-COPY zsh-in-docker.sh /tmp/zsh-in-docker.sh
+COPY zsh-in-docker.sh /tmp/zsh-in-docker.sh 
+COPY .my-alias.zsh /home/abc/.my-alias.zsh
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y update \ 
     && echo "------------------------------------------------------ Common" \
     && apt-get install -y sudo jq git \
-    && apt-get install -y curl wget telnet netcat dnsutils \
+    && apt-get install -y curl wget telnet netcat dnsutils net-tools inetutils-tools iproute2 \
     && apt-get install -y software-properties-common \
-    && apt-get install -y zip gzip tar \
+    && apt-get install -y zip gzip tar lm-sensors lsof strace \
     && apt-get install -y gdebi-core \
     && apt-get install -y acl \
     && apt-get install -y psmisc \
     && echo "------------------------------------------------------ tzdata" \
-    && sudo ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
+    && sudo ln -fs /usr/share/zoneinfo/Europe/Lisbon /etc/localtime \
     && sudo apt-get install --reinstall tzdata \
     && echo "------------------------------------------------------ User" \
     && useradd -u 8877 -p $(openssl passwd -1 abc) abc \
@@ -36,7 +37,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && pip install --upgrade pip \
     && pip install --upgrade setuptools \
     && pip install --upgrade distlib \
-    &&  apt-get install -y python-is-python3 \
+    && apt-get install -y python-is-python3 \
     && mkdir -p /usr/bin/pip3.8 \
     && chown abc /usr/bin/pip3.8 \
     && echo "------------------------------------------------------ Add abc user to sudo" \
@@ -119,6 +120,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y tilde \
     && echo "------------------------------------------------------ File browsers: MC" \
     && apt-get install -y mc \
+    && apt-get install -y ranger \
     && echo "------------------------------------------------------ multitasking in a terminal " \
     && apt-get install -y tmux \
     && echo "------------------------------------------------------ Sys monitoring" \

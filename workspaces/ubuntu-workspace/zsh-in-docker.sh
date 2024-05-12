@@ -97,6 +97,13 @@ export TERM=xterm
 ##### Zsh/Oh-my-Zsh Configuration
 export ZSH="$_HOME/.oh-my-zsh"
 
+####### Add empty line after each command
+precmd() {
+    precmd() {
+        echo
+    }
+}
+
 ZSH_THEME="${_THEME}"
 plugins=($_PLUGINS)
 
@@ -154,3 +161,5 @@ if [ "$THEME" = "powerlevel10k/powerlevel10k" ]; then
     git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
     powerline10k_config >> $HOME/.zshrc
 fi
+
+echo "source $HOME/.my-alias.zsh" >> $HOME/.zshrc

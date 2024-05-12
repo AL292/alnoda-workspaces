@@ -1,0 +1,40 @@
+alias free="free -h"
+alias dk="docker"
+alias dkps="docker ps"
+alias dkpsa="docker ps -a"
+alias dkimg="docker images"
+alias dc="docker-compose"
+alias kubie="kubie-linux-amd64"
+alias kctx="kubectx"
+alias kb="kubens"
+
+# alias rm="gio trash"
+alias gc="gcloud"
+alias 'cd..'="cd .."
+alias pd="podman"
+alias tf="terraform"
+alias ans="ansible"
+alias k=kubectl
+alias kc='kubecolor'
+alias wget="wget -c"
+alias df="df -h -x fuse.portal"
+alias ct="custodian"
+alias mk="minikube"
+alias ctsc='custodian schema'
+alias tc='terracognita'
+alias tfr='terraformer-google-linux-amd64'
+alias trg='terragrunt_linux_amd64'
+alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias dotgit='git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias gst='git status'
+alias gf='git fetch'
+alias lsblk="lsblk --fs"
+alias yt='yt-dlp'
+alias ib='ibmcloud'
+alias du='du -h'
+alias py='python'
+alias dt='distrobox'
+alias tb='toolbox'
+alias vg='vagrant'
+alias sys='systemctl'
+
